@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names
+// ignore_for_file: prefer_const_constructors, file_names, non_constant_identifier_names, avoid_types_as_parameter_names
 
 import 'package:flutter/material.dart';
 
@@ -8,15 +8,16 @@ class TextWidget {
       color: color,
       fontFamily: "semibold",
       fontWeight: FontWeight.bold,
+      fontSize: 20.0
     );
   }
 
-  static TextStyle title() {
+  static TextStyle title(Color) {
     return TextStyle(
-      color: Colors.black,
+      color: Color,
       fontFamily: "semibold",
       fontWeight: FontWeight.bold,
-      fontSize: 24.0
+      fontSize: 30.0
     );
   }
 
@@ -26,6 +27,15 @@ class TextWidget {
       fontFamily: "semibold",
       fontWeight: FontWeight.w500,
       fontSize: 15.0
+    );
+  }
+
+  static TextStyle buttontext() {
+    return TextStyle(
+      color: Colors.white,
+      fontFamily: "semibold",
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0
     );
   }
 }

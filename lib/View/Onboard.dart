@@ -49,7 +49,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         SizedBox(height: 30),
         Text(
           title,
-          style: TextWidget.title(),
+          style: TextWidget.title(
+            Colors.black
+          ),
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 15),
