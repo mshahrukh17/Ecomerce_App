@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, file_names, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, file_names, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_full_hex_values_for_flutter_colors
 
+import 'package:ecomerce_app_3/View/CartPage.dart';
 import 'package:ecomerce_app_3/View/Homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -28,7 +29,7 @@ class _NavbarState extends State<Navbar> {
         children: [
           HomePage(),
           Center(child: Text("Favourite")),
-          Center(child: Text("person")),
+          CartPage(),
           Center(child: Text("Settigns"))
         ],
       ),
@@ -38,13 +39,12 @@ class _NavbarState extends State<Navbar> {
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
           child: GNav(
               rippleColor:
-                  Colors.black38, // tab button ripple color when pressed
+                  Colors.black38, 
               hoverColor: Colors.grey.shade700,
               backgroundColor: Colors.white,
               color: Colors.black,
               activeColor: Colors.white,
               tabBackgroundColor: Color(0xfffF83758),
-              //  duration: Duration(milliseconds: 400),
               gap: 8.0,
               padding: EdgeInsets.all(16.0),
               selectedIndex: _selectedIndex,
@@ -59,12 +59,17 @@ class _NavbarState extends State<Navbar> {
                 });
               },
               tabs: [
-                GButton(icon: Icons.home, text: "Home",),
-                GButton(icon: Icons.favorite,  text: "Favourite"),
+                GButton(
+                  icon: Icons.home,
+                  iconSize: 20,
+                  text: "Home",
+                ),
+                GButton(icon: Icons.favorite, iconSize: 20, text: "Favourite"),
                 GButton(
                     icon: Icons.shopping_bag_rounded,
+                    iconSize: 20,
                     text: "Cart"),
-                GButton(icon: Icons.settings, text: "settings")
+                GButton(icon: Icons.settings, iconSize: 20, text: "settings")
               ]),
         ),
       ),

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables
+// ignore_for_file: file_names, prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables, use_full_hex_values_for_flutter_colors
 
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class TextFieldWidget2 extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: controller,
-        cursorColor: Colors.blue,
+        cursorColor: Color(0xfffF83758),
         decoration: InputDecoration(
           suffixIcon: suffixicon,
           prefixIcon: prefixicon,
@@ -33,7 +33,7 @@ class TextFieldWidget2 extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: Colors.blue,
+                color: Color(0xfffF83758),
                 width: 4,
               )),
         ),

@@ -8,7 +8,7 @@ class TextWidget {
       color: color,
       fontFamily: "semibold",
       fontWeight: FontWeight.bold,
-      fontSize: 20.0
+      fontSize: 16.0
     );
   }
 

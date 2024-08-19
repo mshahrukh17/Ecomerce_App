@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:ecomerce_app_3/Models/Categorymodel.dart';
+import 'package:ecomerce_app_3/View/Itemsdetail.dart';
 import 'package:ecomerce_app_3/Widgets/Carousalslid.dart';
 import 'package:ecomerce_app_3/Widgets/TextField2.dart';
 import 'package:ecomerce_app_3/Widgets/TextWidget.dart';
@@ -102,10 +103,9 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemCount: Category.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
-                    crossAxisSpacing: 2,
-                    childAspectRatio: 0.8
-                  ),
+                      crossAxisCount: 5,
+                      crossAxisSpacing: 2,
+                      childAspectRatio: 0.8),
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
@@ -123,80 +123,65 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
               CarouselExample(),
-              SizedBox(
-                height: 10,
-              ),
               GridView.builder(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: items.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.44,
-                ),
-                itemBuilder: (context, index) {
-                  var item = items[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 240,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              image: DecorationImage(
-                                  image: AssetImage(item["image"]),
-                                  fit: BoxFit.cover)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
-                            child: Text(
-                              item["title"].toString(),
-                              maxLines: 1,
-                              style: TextWidget.nametitle(Colors.black),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: items.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 5,
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.7),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ItemsDetail(itemsinfo: items[index]),
+                          )),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: GridTile(
+                            footer: Padding(
+                              padding: const EdgeInsets.only(left: 6),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    items[index]["title"],
+                                    style: TextWidget.nametitle(Colors.black),
+                                    maxLines: 1,
+                                  ),
+                                  Text(
+                                    items[index]["description"],
+                                    style: TextWidget.description(),
+                                    maxLines: 2,
+                                  ),
+                                  Text(
+                                    items[index]["price"],
+                                    style: TextWidget.nametitle(Colors.black),
+                                    maxLines: 1,
+                                  ),
+                                  Text(
+                                    "Sold ${items[index]["sold"]}",
+                                    style: TextWidget.description(),
+                                    maxLines: 1,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            item["description"],
-                            style: TextWidget.description(),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text(
-                            item["price"],
-                            style: TextWidget.description(),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Row(
-                            children: [
-                              Icon(Icons.star_outlined, color: Colors.yellow.shade800,),
-                              Icon(Icons.star_outlined, color: Colors.yellow.shade800,),
-                              Icon(Icons.star_outlined, color: Colors.yellow.shade800,),
-                              Icon(Icons.star_outlined, color: Colors.yellow.shade800,),
-                              Icon(Icons.star_half,)
-                            ],
-                          )
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
+                            header: Image.asset(
+                              items[index]["image"],
+                              height: 130,
+                              fit: BoxFit.fitWidth,
+                            ),
+                            child: Column()),
+                      ),
+                    );
+                  })
             ],
           ),
         ),

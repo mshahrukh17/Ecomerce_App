@@ -15,11 +15,11 @@ class CarouselExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 240.0,
+        height: 165.0,
         autoPlayAnimationDuration: Duration(seconds: 1),
         autoPlay: true,
         enlargeCenterPage: true,
-        aspectRatio: 16 / 9,
+        // aspectRatio: 16 / 9,
         onPageChanged: (index, reason) {
           // print('Page changed to $index');
         },
@@ -32,7 +32,7 @@ class CarouselExample extends StatelessWidget {
                       child: Image.asset(item, fit: BoxFit.cover, width: 1000),
                     ),
                     Positioned(
-                        bottom: 70,
+                        bottom: 35,
                         left: 20,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
